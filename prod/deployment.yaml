@@ -18,3 +18,9 @@ spec:
         image: us-east4-docker.pkg.dev/qwiklabs-gcp-03-bd903ee60f3d/my-repository/hello-cloudbuild:v1.0
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
