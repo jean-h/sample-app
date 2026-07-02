@@ -30,13 +30,14 @@ func main() {
 	// Root handler for health checks and default landing
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Received request for %s from %s", r.URL.Path, r.RemoteAddr)
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		fmt.Fprintf(w, "Hello, the Go server is running in production!")
 	})
 
 	http.HandleFunc("/blue", blueHandler)
 	/*http.HandleFunc("/red", redHandler)*/
 	log.Println("Starting production server on :8080...")
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func blueHandler(w http.ResponseWriter, r *http.Request) {
