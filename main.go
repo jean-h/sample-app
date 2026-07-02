@@ -17,20 +17,30 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/draw"
 	"image/png"
+	"log"
 	"net/http"
 )
 
 func main() {
+	// Root handler for health checks and default landing
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("Received request for %s from %s", r.URL.Path, r.RemoteAddr)
+		fmt.Fprintf(w, "Hello, the Go server is running!")
+	})
+
 	http.HandleFunc("/blue", blueHandler)
 	/*http.HandleFunc("/red", redHandler)*/
+	log.Println("Starting server on :8080...")
 	http.ListenAndServe(":8080", nil)
 }
 
 func blueHandler(w http.ResponseWriter, r *http.Request) {
+	log.Println("Handling /blue request")
 	img := image.NewRGBA(image.Rect(0, 0, 100, 100))
 	draw.Draw(img, img.Bounds(), &image.Uniform{color.RGBA{0, 0, 255, 255}}, image.ZP, draw.Src)
 	w.Header().Set("Content-Type", "image/png")
