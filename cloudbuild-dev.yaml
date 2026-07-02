@@ -22,5 +22,13 @@ steps:
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-east4-b'
     - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
+
+  # Step 5: Force a rollout restart to ensure the new image is pulled
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: 'Refresh Deployment'
+    args: ['-n', 'dev', 'rollout', 'restart', 'deployment/development-deployment']
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east4-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
 options:
   logging: CLOUD_LOGGING_ONLY
