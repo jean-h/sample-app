@@ -18,9 +18,10 @@ steps:
   # Step 4: Apply the development deployment YAML file to the dev namespace
   - name: 'gcr.io/cloud-builders/kubectl'
     id: 'Deploy'
-    args: ['-n', 'dev', 'apply', '-f', 'dev/deployment.yaml']
+    args: ['-n', 'dev', 'apply', '-f', 'dev/']
     env:
     - 'CLOUDSDK_COMPUTE_ZONE=us-west1-a'
     - 'CLOUDSDK_CONTAINER_CLUSTER=hello-cluster'
+serviceAccount: 'projects/$PROJECT_ID/serviceAccounts/qwiklabs-gcp-00-7ebba5ed2ccb@qwiklabs-gcp-00-7ebba5ed2ccb.iam.gserviceaccount.com'
 options:
   logging: CLOUD_LOGGING_ONLY
