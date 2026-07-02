@@ -2,7 +2,7 @@ steps:
   # Step 1: Compile the Go Application
   - name: 'gcr.io/cloud-builders/go'
     id: 'Compile application'
-    env: ['GOPATH=/gopath']
+    env: ['GOPATH=/gopath', 'CGO_ENABLED=0']
     args: ['build', '-o', 'main', 'main.go']
 
   # Step 2: Build the Docker image for the Go application
