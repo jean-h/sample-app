@@ -1,2 +1,2 @@
-# -sample-app
+# sample-app
 Google Skills Training sample-app
