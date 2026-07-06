@@ -9,7 +9,7 @@ spec:
       app: dev-app
   template:
     metadata:
-      labels: s
+      labels:
         app: dev-app
     spec:
       containers:
