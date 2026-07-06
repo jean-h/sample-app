@@ -9,11 +9,11 @@ spec:
       app: dev-app
   template:
     metadata:
-      labels:
+      labels: s
         app: dev-app
     spec:
       containers:
       - name: dev-container
-        image: us-west1-docker.pkg.dev/qwiklabs-gcp-04-b76a095c6131/my-repository/hello-cloudbuild
+        image: us-west1-docker.pkg.dev/qwiklabs-gcp-04-b76a095c6131/my-repository/hello-cloudbuild-dev
         ports:
         - containerPort: 8080
